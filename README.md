@@ -42,7 +42,7 @@ I used MySQL for the database, Python and Flask for the backend, and HTML, CSS a
 
 **Contacts:** Store professional contacts connected to companies, along with their names, job titles, email addresses, phone numbers, LinkedIn links, and notes.
 
-**Job Match:** Enter skills separated by commas to see which jobs are the closest match. The application checks the `required\_skills` list in each job's JSON requirements and uses this calculation:
+**Job Match:** Enter skills separated by commas to see which jobs are the closest match. The application checks the `required_skills` list in each job's JSON requirements and uses this calculation:
 
 `Match percentage = (matching required skills / total required skills) × 100`
 
@@ -54,9 +54,9 @@ Results are shown from highest to lowest percentage and include both matching an
 
 #### Database Design
 
-The MySQL database contains four main tables. The `companies` table stores information about employers. The `jobs` table stores job postings, with each job linked to a company through `company\_id`. The `applications` table stores application records and links each application to a job through `job\_id`. The `contacts` table stores contact information and links each contact to a company through `company\_id`.
+The MySQL database contains four main tables. The `companies` table stores information about employers. The `jobs` table stores job postings, with each job linked to a company through `company_id`. The `applications` table stores application records and links each application to a job through `job_id`. The `contacts` table stores contact information and links each contact to a company through `company_id`.
 
-These relationships use foreign keys to connect the records. The `jobs` table also has a JSON column named `requirements`, and the `applications` table has a JSON column named `interview\_data`. The database structure is included in `schema.sql`. Sample records may need to be added separately after importing the schema.
+These relationships use foreign keys to connect the records. The `jobs` table also has a JSON column named `requirements`, and the `applications` table has a JSON column named `interview_data`. The database structure is included in `schema.sql`. Sample records may need to be added separately after importing the schema.
 
 
 
@@ -67,27 +67,27 @@ These relationships use foreign keys to connect the records. The `jobs` table al
 #### Project Files
 
 ```text
-job\_tracker\_project/
+job_tracker_project/
 ├── app.py
 ├── database.py
 ├── schema.sql
-├── sample\_data.sql
+├── sample_data.sql
 ├── requirements.txt
 ├── README.md
-├── AI\_USAGE.md
+├── AI_USAGE.md
 ├── .gitignore
 ├── templates/
 │   ├── base.html
 │   ├── dashboard.html
 │   ├── companies.html
-│   ├── company\_form.html
+│   ├── company_form.html
 │   ├── jobs.html
-│   ├── job\_form.html
+│   ├── job_form.html
 │   ├── applications.html
-│   ├── application\_form.html
+│   ├── application_form.html
 │   ├── contacts.html
-│   ├── contact\_form.html
-│   └── job\_match.html
+│   ├── contact_form.html
+│   └── job_match.html
 └── static/
     └── style.css
 ```
@@ -114,16 +114,16 @@ py -m pip install -r requirements.txt
 
 On a system without the Windows `py` launcher, use `python3 -m pip` instead. The main packages are Flask, mysql-connector-python, and python-dotenv.
 
-**4. Set up the database.** Start MySQL and import `schema.sql` using MySQL Workbench. Make sure the database is named `job\_tracker` and that the MySQL account has permission to work with its tables. If the schema file does not create the database automatically, create it before importing the tables.
+**4. Set up the database.** Start MySQL and import `schema.sql` using MySQL Workbench. Make sure the database is named `job_tracker` and that the MySQL account has permission to work with its tables. If the schema file does not create the database automatically, create it before importing the tables.
 
 **5. Configure the database connection.** Create a `.env` file in the main project folder with the settings needed by `database.py` and a Flask secret key. An example is shown below; the variable names must match those used in `database.py`.
 
 ```dotenv
-DB\_HOST=localhost
-DB\_USER=root
-DB\_PASSWORD=your\_mysql\_password
-DB\_NAME=job\_tracker
-SECRET\_KEY=replace\_with\_a\_long\_random\_secret
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=your_mysql_password
+DB_NAME=job_tracker
+SECRET_KEY=replace_with_a_long_random_secret
 ```
 
 Do not upload `.env` to GitHub because it contains local credentials.
