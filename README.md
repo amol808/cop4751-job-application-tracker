@@ -6,7 +6,7 @@ Course Project
 
 
 
-#### 
+
 
 #### Project Overview
 
@@ -16,7 +16,7 @@ I used MySQL for the database, Python and Flask for the backend, and HTML, CSS a
 
 
 
-#### 
+
 
 #### Technologies Used
 
@@ -28,7 +28,7 @@ I used MySQL for the database, Python and Flask for the backend, and HTML, CSS a
 
 
 
-#### 
+
 
 #### Features
 
@@ -71,6 +71,7 @@ job\_tracker\_project/
 ├── app.py
 ├── database.py
 ├── schema.sql
+├── sample\_data.sql
 ├── requirements.txt
 ├── README.md
 ├── AI\_USAGE.md
@@ -150,8 +151,6 @@ I tested adding, viewing, updating and deleting records in Companies, Jobs, Appl
 #### Project Notes
 
 This application was built for a course project and runs locally with Flask and MySQL. It has not been deployed as a public website.
-
-
 
 
 
