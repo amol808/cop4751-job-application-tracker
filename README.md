@@ -152,7 +152,3 @@ I tested adding, viewing, updating and deleting records in Companies, Jobs, Appl
 
 This application was built for a course project and runs locally with Flask and MySQL. It has not been deployed as a public website.
 
-
-
-
-
