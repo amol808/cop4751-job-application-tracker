@@ -1,0 +1,106 @@
+
+
+{% extends "base.html" %}
+
+{% block title %}Contacts | Job Application Tracker{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="fw-bold">Contacts</h1>
+        <p class="text-muted">
+            Manage your professional contacts and connections.
+        </p>
+    </div>
+
+    <a href="{{ url_for('add_contact') }}" class="btn btn-primary">
+        + Add Contact
+    </a>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Company</th>
+                        <th>Job Title</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>LinkedIn</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for contact in contacts %}
+                    <tr>
+                        <td>
+                            {{ contact.first_name }}
+                            {{ contact.last_name }}
+                        </td>
+
+                        <td>{{ contact.company_name }}</td>
+                        <td>{{ contact.job_title or '—' }}</td>
+
+                        <td>
+                            {% if contact.email %}
+                                <a href="mailto:{{ contact.email }}">
+                                    {{ contact.email }}
+                                </a>
+                            {% else %}
+                                —
+                            {% endif %}
+                        </td>
+
+                        <td>{{ contact.phone or '—' }}</td>
+
+                        <td>
+                            {% if contact.linkedin_url %}
+                                <a href="{{ contact.linkedin_url }}"
+                                   target="_blank"
+                                   rel="noopener noreferrer">
+                                    View Profile
+                                </a>
+                            {% else %}
+                                —
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            <div class="d-flex gap-2">
+                                <a href="{{ url_for('edit_contact', contact_id=contact.contact_id) }}"
+                                   class="btn btn-sm btn-outline-primary">
+                                    Edit
+                                </a>
+
+                                <form method="POST"
+                                      action="{{ url_for('delete_contact', contact_id=contact.contact_id) }}"
+                                      onsubmit="return confirm('Are you sure you want to delete this contact?');">
+
+                                    <button type="submit"
+                                            class="btn btn-sm btn-outline-danger">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+
+                    {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center">
+                            No contacts found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

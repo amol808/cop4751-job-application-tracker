@@ -1,0 +1,62 @@
+
+{% extends "base.html" %}
+
+{% block title %}Dashboard | Job Application Tracker{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+    <h1 class="fw-bold">Dashboard</h1>
+    <p class="text-muted">
+        Welcome to your Job Application Tracker.
+        Manage applications, explore jobs, and track your progress.
+    </p>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-6 col-lg-3">
+        <div class="card p-4">
+            <h6 class="text-muted">Companies</h6>
+            <h2 class="fw-bold">{{ companies }}</h2>
+            <a href="/companies" class="text-decoration-none">View Companies</a>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+        <div class="card p-4">
+            <h6 class="text-muted">Jobs</h6>
+            <h2 class="fw-bold">{{ jobs }}</h2>
+            <a href="/jobs" class="text-decoration-none">View Jobs</a>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+        <div class="card p-4">
+            <h6 class="text-muted">Applications</h6>
+            <h2 class="fw-bold">{{ applications }}</h2>
+            <a href="/applications" class="text-decoration-none">View Applications</a>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-lg-3">
+        <div class="card p-4">
+            <h6 class="text-muted">Contacts</h6>
+            <h2 class="fw-bold">{{ contacts }}</h2>
+            <a href="/contacts" class="text-decoration-none">View Contacts</a>
+        </div>
+    </div>
+</div>
+
+<div class="card mt-4">
+    <div class="card-body p-4">
+        <h4 class="fw-bold">Job Match</h4>
+        <p class="text-muted">
+            Discover job opportunities that match your skills.
+        </p>
+        <a href="/job-match" class="btn btn-primary">
+            Find Matching Jobs
+        </a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,142 @@
+
+{% extends "base.html" %}
+
+{% block title %}Job Match | Job Application Tracker{% endblock %}
+
+{% block content %}
+
+<div class="mb-4">
+    <h1 class="fw-bold">Job Match</h1>
+    <p class="text-muted">
+        Discover which jobs best match your skills.
+    </p>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body p-4">
+
+        <h4 class="mb-3">Enter Your Skills</h4>
+
+        <form method="POST">
+            <div class="mb-3">
+                <label class="form-label">
+                    Your Skills (comma-separated)
+                </label>
+
+                <input type="text"
+                       name="skills"
+                       class="form-control"
+                       placeholder="Python, SQL, Flask, Git"
+                       value="{{ user_skills_text }}"
+                       required>
+
+                <div class="form-text">
+                    Separate each skill with a comma.
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Find Matching Jobs
+            </button>
+        </form>
+
+    </div>
+</div>
+
+{% if searched %}
+
+<h3 class="fw-bold mb-3">Your Job Matches</h3>
+
+{% if matches %}
+
+<p class="text-muted">
+    Found {{ matches|length }} jobs with skill requirements.
+    Results are ranked by match percentage.
+</p>
+
+{% for job in matches %}
+
+<div class="card mb-3">
+    <div class="card-body p-4">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <h4 class="fw-bold mb-1">
+                    {{ job.job_title }}
+                </h4>
+
+                <p class="text-muted mb-0">
+                    {{ job.company_name }}
+                </p>
+            </div>
+
+            <h3 class="fw-bold
+                {% if job.match_percentage >= 80 %}
+                    text-success
+                {% elif job.match_percentage >= 50 %}
+                    text-primary
+                {% else %}
+                    text-warning
+                {% endif %}">
+                {{ job.match_percentage }}%
+            </h3>
+        </div>
+
+        <div class="progress mb-3" style="height: 12px;">
+            <div class="progress-bar
+                {% if job.match_percentage >= 80 %}
+                    bg-success
+                {% elif job.match_percentage >= 50 %}
+                    bg-primary
+                {% else %}
+                    bg-warning
+                {% endif %}"
+                 role="progressbar"
+                 style="width: {{ job.match_percentage }}%;"
+                 aria-valuenow="{{ job.match_percentage }}"
+                 aria-valuemin="0"
+                 aria-valuemax="100">
+            </div>
+        </div>
+
+        <p class="mb-2">
+            <strong>Matching Skills:</strong>
+            {% if job.matched_skills %}
+                {% for skill in job.matched_skills %}
+                    <span class="badge bg-success me-1">
+                        {{ skill }}
+                    </span>
+                {% endfor %}
+            {% else %}
+                None
+            {% endif %}
+        </p>
+
+        <p class="mb-0">
+            <strong>Missing Skills:</strong>
+            {% if job.missing_skills %}
+                {% for skill in job.missing_skills %}
+                    <span class="badge bg-secondary me-1">
+                        {{ skill }}
+                    </span>
+                {% endfor %}
+            {% else %}
+                None — all required skills matched!
+            {% endif %}
+        </p>
+
+    </div>
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<div class="alert alert-info">
+    No jobs with valid required skills were found.
+</div>
+
+{% endif %}
+{% endif %}
+
+{% endblock %}
