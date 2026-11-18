@@ -48,7 +48,7 @@ Contacts: Store professional contacts connected to companies, along with their n
 
 
 
-Job Match: Enter skills separated by commas to see which jobs are the closest match. The application checks the required\_skills list in each job's JSON requirements and uses this calculation:
+Job Match: Enter skills separated by commas to see which jobs are the closest match. The application checks the required_skills list in each job's JSON requirements and uses this calculation:
 
 
 
@@ -60,15 +60,15 @@ Results are shown from highest to lowest percentage and include both matching an
 
 Database Design
 
-The MySQL database contains four main tables. The companies table stores information about employers. The jobs table stores job postings, with each job linked to a company through company\_id. The applications table stores application records and links each application to a job through job\_id. The contacts table stores contact information and links each contact to a company through company\_id.
+The MySQL database contains four main tables. The companies table stores information about employers. The jobs table stores job postings, with each job linked to a company through company_id. The applications table stores application records and links each application to a job through job_id. The contacts table stores contact information and links each contact to a company through company_id.
 
 
 
-These relationships use foreign keys to connect the records. The jobs table also has a JSON column named requirements, and the applications table has a JSON column named interview\_data. The database structure is included in schema.sql. Sample records may need to be added separately after importing the schema.
+These relationships use foreign keys to connect the records. The jobs table also has a JSON column named requirements, and the applications table has a JSON column named interview_data. The database structure is included in schema.sql. Sample records may need to be added separately after importing the schema.
 
 Project Files
 
-job\_tracker\_project/
+job_tracker_project/
 
 ├── app.py
 
@@ -76,13 +76,13 @@ job\_tracker\_project/
 
 ├── schema.sql
 
-├── sample\_data.sql
+├── sample_data.sql
 
 ├── requirements.txt
 
 ├── README.md
 
-├── AI\_USAGE.md
+├── AI_USAGE.md
 
 ├── .gitignore
 
@@ -94,21 +94,21 @@ job\_tracker\_project/
 
 │   ├── companies.html
 
-│   ├── company\_form.html
+│   ├── company_form.html
 
 │   ├── jobs.html
 
-│   ├── job\_form.html
+│   ├── job_form.html
 
 │   ├── applications.html
 
-│   ├── application\_form.html
+│   ├── application_form.html
 
 │   ├── contacts.html
 
-│   ├── contact\_form.html
+│   ├── contact_form.html
 
-│   └── job\_match.html
+│   └── job_match.html
 
 └── static/
 
@@ -134,7 +134,7 @@ On a system without the Windows py launcher, use python3 -m pip instead. The mai
 
 
 
-4\. Set up the database. Start MySQL and import schema.sql using MySQL Workbench. Make sure the database is named job\_tracker and that the MySQL account has permission to work with its tables. If the schema file does not create the database automatically, create it before importing the tables. After importing schema.sql, import sample\_data.sql to add example companies, jobs, applications and contacts.
+4\. Set up the database. Start MySQL and import schema.sql using MySQL Workbench. Make sure the database is named job_tracker and that the MySQL account has permission to work with its tables. If the schema file does not create the database automatically, create it before importing the tables. After importing schema.sql, import sample_data.sql to add example companies, jobs, applications and contacts.
 
 
 
@@ -142,15 +142,15 @@ On a system without the Windows py launcher, use python3 -m pip instead. The mai
 
 ```dotenv
 
-DB\_HOST=localhost
+DB_HOST=localhost
 
-DB\_USER=root
+DB_USER=root
 
-DB\_PASSWORD=your\_mysql\_password
+DB_PASSWORD=your_mysql_password
 
-DB\_NAME=job\_tracker
+DB_NAME=job_tracker
 
-SECRET\_KEY=replace\_with\_a\_long\_random\_secret
+SECRET_KEY=replace_with_a_long_random_secret
 
 ```
 
