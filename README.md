@@ -3,6 +3,12 @@ Job Application Tracker
 COP4751 – Advanced Database Management
 
 
+#### Demonstration Video
+
+(https://github.com/amol808/cop4751-job-application-tracker/releases/download/v1.0/Job_Application_Tracker_Demo.mp4)
+
+
+
 
 Course Project
 
